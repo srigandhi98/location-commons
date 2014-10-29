@@ -48,7 +48,7 @@ public class PopulationCenterCalculatorImplTest {
 	
 	@After
 	public void logAfterMethod(){
-		System.out.println("--------testCase Executed successfully----------");
+		System.out.println("--------testCase Executed----------");
 		System.out.println();
 	}
 	
@@ -69,6 +69,8 @@ public class PopulationCenterCalculatorImplTest {
 		City calculatedClosestCity  = populationCenterCalculatorImpl.findCityCloseToThePopulationCentre(cities);
 		City expectedClosestCity  = City.createCityFromDecimalMeasures(40.7143528, -74.0059731, "Newyork", 1095);
 		Assert.assertEquals(expectedClosestCity, calculatedClosestCity);
+		System.out.println("Caluclated closestCity - "+calculatedClosestCity);
+		System.out.println("Expected closestCity - "+expectedClosestCity);
 		
 	}
 	
@@ -77,18 +79,20 @@ public class PopulationCenterCalculatorImplTest {
 	public void testCase2(){
 		System.out.println("successTestCase2");
 
-		String[] names = {"Newyork", "Chicago", "Atlanta"};
+		String[] names = {"Hyderabad", "Bangalore", "Delhi", "Mumbai", "Chennai", "Etikoppaka", "NagarKarnool", "Newyork", "Houston", "Ahmedabad"};
 		
-		double[] decimalLatitudes = {40.7143528, 41.8781136, 33.7489954};
+		double[] decimalLatitudes = {17.366, 12.9667, 28.6139, 18.975, 13.0839, 17.5000, 16.4833, 40.7127, 29.7628, 23.0300};
 		
-		double[] decimalLongitudes = {-74.0059731, -87.6297982, -84.3879824};
+		double[] decimalLongitudes = {78.4760, 77.5667, 77.2089, 72.8258, 80.2700, 82.7300, 78.3333, -74.0059, -95.3831, 72.5800};
 		
-		long [] populations = {1095, 730, 365};
+		long [] populations = {7749334, 8499399, 21753486, 20998395, 8696010, 12000, 26801, 23484225 , 6313158, 6352254};
 		
 		List<City> cities= CityUtil.buildCityListFromDecimalLatitudesAndLongitudes(decimalLatitudes, decimalLongitudes, names, populations);		
 		City calculatedClosestCity  = populationCenterCalculatorImpl.findCityCloseToThePopulationCentre(cities);
-		City expectedClosestCity  = City.createCityFromDecimalMeasures(40.7143528, -74.0059731, "Newyork", 1095);
+		City expectedClosestCity  = City.createCityFromDecimalMeasures(28.6139, 77.2089, "Delhi", 21753486);
 		Assert.assertEquals(expectedClosestCity, calculatedClosestCity);
+		System.out.println("Caluclated closestCity - "+calculatedClosestCity);
+		System.out.println("Expected closestCity - "+expectedClosestCity);
 		
 	}
 	//invalid number of data points

@@ -41,7 +41,7 @@ public class Location {
 	}
 	
 	public static Location createLocationFromDecimalMeasures(double decimalLatitude, double decimalLongitude){
-		if(decimalLatitude < -90.0 || decimalLatitude > 90.0 || decimalLongitude < -90.0 || decimalLongitude > 90.0){
+		if(decimalLatitude < -90.0 || decimalLatitude > 90.0 || decimalLongitude < -180.0 || decimalLongitude > 180.0){
 			throw new IllegalArgumentException("Invalid latitude and/or longitude provided");
 		} else{
 			double radianLatitude = calculateRadianFromDecimal(decimalLatitude);
@@ -55,7 +55,7 @@ public class Location {
 	}
 	
 	public static Location createLocationFromRadianMeasures(double radianLatitude, double radianLongitude){
-		if(radianLatitude < -1.571 || radianLatitude > 1.571 || radianLongitude < -1.571 || radianLongitude > 1.571){
+		if(radianLatitude < -1.571 || radianLatitude > 1.571 || radianLongitude < -3.142 || radianLongitude > 3.142){
 			throw new IllegalArgumentException("Invalid latitude and/or longitude provided");
 		} else{
 			double decimalLatitude = calculateDecimalFromRadian(radianLatitude);
